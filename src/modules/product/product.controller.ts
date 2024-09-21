@@ -1,9 +1,17 @@
 import { Request, Response } from "express";
 import { productService } from "./product.service";
+import { TQuery } from "./product.interface";
+import { Category } from "../../enum/category.enum";
 
 const getAllProducts = async (req: Request, res: Response) => {
   try {
-    const products = await productService.getAllProducts();
+    const query: TQuery = {
+      category: req.query.category as Category,
+      price: Number(req.query.price),
+      sorting: req.query.sorting as string,
+      search: req.query.search as string,
+    };
+    const products = await productService.getAllProducts(query);
     res.status(200).json({
       success: true,
       message: "Products fetched successfully",

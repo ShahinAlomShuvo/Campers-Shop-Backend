@@ -9,3 +9,10 @@ export type TProduct = {
   ratings: number;
   image: string;
 };
+
+export type TQuery = {
+  category?: Category;
+  price?: number;
+  sorting?: string;
+  search?: string;
+};
