@@ -26,6 +26,15 @@ const getAllProducts = async ({ category, price, sorting, search }: TQuery) => {
   return products;
 };
 
+const getProductById = async (id: string) => {
+  const product = await Product.findById(id);
+  if (!product) {
+    throw new Error("Product not found");
+  }
+  return product;
+};
+
 export const productService = {
   getAllProducts,
+  getProductById,
 };
