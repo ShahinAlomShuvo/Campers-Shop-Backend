@@ -7,4 +7,6 @@ route.get("/", productController.getAllProducts);
 
 route.get("/:id", productController.getProductById);
 
+route.put("/:id", productController.updateProduct);
+
 export const productRoute = route;

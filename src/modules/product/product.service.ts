@@ -1,4 +1,4 @@
-import { TQuery } from "./product.interface";
+import { TProduct, TQuery } from "./product.interface";
 import Product from "./product.model";
 
 const getAllProducts = async ({ category, price, sorting, search }: TQuery) => {
@@ -34,7 +34,18 @@ const getProductById = async (id: string) => {
   return product;
 };
 
+const updateProduct = async (id: string, product: Partial<TProduct>) => {
+  await getProductById(id);
+
+  const updatedProduct = await Product.findByIdAndUpdate(id, product, {
+    new: true,
+  });
+
+  return updatedProduct;
+};
+
 export const productService = {
   getAllProducts,
   getProductById,
+  updateProduct,
 };
