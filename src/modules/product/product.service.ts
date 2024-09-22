@@ -1,6 +1,11 @@
 import { TProduct, TQuery } from "./product.interface";
 import Product from "./product.model";
 
+const createProduct = async (product: TProduct) => {
+  const result = await Product.create(product);
+  return result;
+};
+
 const getAllProducts = async ({ category, price, sorting, search }: TQuery) => {
   const filter: Record<string, any> = {};
 
@@ -44,8 +49,16 @@ const updateProduct = async (id: string, product: Partial<TProduct>) => {
   return updatedProduct;
 };
 
+const deleteProduct = async (id: string) => {
+  await getProductById(id);
+  const result = await Product.findByIdAndDelete(id);
+  return result;
+};
+
 export const productService = {
+  createProduct,
   getAllProducts,
   getProductById,
   updateProduct,
+  deleteProduct,
 };

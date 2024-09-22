@@ -3,6 +3,23 @@ import { productService } from "./product.service";
 import { TQuery } from "./product.interface";
 import { Category } from "../../enum/category.enum";
 
+const createProduct = async (req: Request, res: Response) => {
+  try {
+    const product = await productService.createProduct(req.body);
+    res.status(201).json({
+      success: true,
+      message: "Product created successfully",
+      data: product,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to create product",
+      error: error,
+    });
+  }
+};
+
 const getAllProducts = async (req: Request, res: Response) => {
   try {
     const query: TQuery = {
@@ -60,8 +77,27 @@ const updateProduct = async (req: Request, res: Response) => {
   }
 };
 
+const deleteProduct = async (req: Request, res: Response) => {
+  try {
+    const product = await productService.deleteProduct(req.params.id);
+    res.status(200).json({
+      success: true,
+      message: "Product deleted successfully",
+      data: product,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to delete product",
+      error: error,
+    });
+  }
+};
+
 export const productController = {
+  createProduct,
   getAllProducts,
   getProductById,
   updateProduct,
+  deleteProduct,
 };
