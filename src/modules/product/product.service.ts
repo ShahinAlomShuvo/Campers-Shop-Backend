@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { TProduct, TQuery } from "./product.interface";
 import Product from "./product.model";
 
@@ -8,8 +9,6 @@ const createProduct = async (product: TProduct) => {
 
 const getAllProducts = async ({ category, price, sorting, search }: TQuery) => {
   const filter: Record<string, any> = {};
-
-  let sort: number = -1;
 
   if (category) {
     filter["category"] = category;
@@ -22,12 +21,9 @@ const getAllProducts = async ({ category, price, sorting, search }: TQuery) => {
     filter["description"] = { $regex: search, $options: "i" };
   }
 
-  if (sorting === "asc") {
-    sort = 1;
-  } else if (sorting === "desc") {
-    sort = -1;
-  }
-  const products = await Product.find(filter).sort({ price: sort });
+  const products = await Product.find(filter).sort({
+    price: sorting === "asc" ? 1 : -1,
+  });
   return products;
 };
 
