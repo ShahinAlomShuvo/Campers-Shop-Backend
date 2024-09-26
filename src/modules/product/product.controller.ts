@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { productService } from "./product.service";
 import { TQuery } from "./product.interface";
 import { Category } from "../../enum/category.enum";
+import noDataFound from "../../utils/noDataFound.utils";
 
 const createProduct = async (req: Request, res: Response) => {
   try {
@@ -29,6 +30,9 @@ const getAllProducts = async (req: Request, res: Response) => {
       search: req.query.search as string,
     };
     const products = await productService.getAllProducts(query);
+    if (!products) {
+      noDataFound(res, "No products found");
+    }
     res.status(200).json({
       success: true,
       message: "Products fetched successfully",

@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { AppError } from "../../errors/AppError";
 import { TProduct, TQuery } from "./product.interface";
 import Product from "./product.model";
 
@@ -30,7 +31,7 @@ const getAllProducts = async ({ category, price, sorting, search }: TQuery) => {
 const getProductById = async (id: string) => {
   const product = await Product.findById(id);
   if (!product) {
-    throw new Error("Product not found");
+    new AppError(404, "Product not found");
   }
   return product;
 };
