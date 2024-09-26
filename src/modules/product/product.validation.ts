@@ -16,9 +16,12 @@ const CreateProductValidationSchema = z.object({
     Category.Backpacks,
   ]),
   ratings: z.number().min(0).max(5, "Ratings must be between 0 and 5."),
-  images: z.string().url("Must be a valid URL for the image."),
+  image: z.string().url("Must be a valid URL for the image."),
 });
+
+const UpdateProductValidationSchema = CreateProductValidationSchema.partial();
 
 export const ProductValidation = {
   CreateProductValidationSchema,
+  UpdateProductValidationSchema,
 };
