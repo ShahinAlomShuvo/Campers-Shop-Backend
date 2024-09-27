@@ -1,10 +1,13 @@
 # Campers Shop
 
-Campers Shop is an e-commerce website dedicated to providing all necessary and fun items for camping enthusiasts. The design is user-friendly and visually appealing, taking inspiration from top camping e-commerce platforms.
-
 ## Project Overview
 
 Campers Shop provides a streamlined shopping experience for camping enthusiasts, offering a variety of products essential for outdoor adventures. The site is designed with a modern, user-friendly interface and includes key e-commerce features like product management, search, filtering, and cart functionality.
+
+### Live URL
+
+[Campers Shop Frontend Live Site](#) _(https://campers-shop-sepia.vercel.app)_
+[Campers Shop Backend Live Site](#) _(https://campers-shop-backend-gules.vercel.app)_
 
 ## Features
 
