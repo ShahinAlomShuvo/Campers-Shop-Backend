@@ -4,9 +4,12 @@
 
 Campers Shop provides a streamlined shopping experience for camping enthusiasts, offering a variety of products essential for outdoor adventures. The site is designed with a modern, user-friendly interface and includes key e-commerce features like product management, search, filtering, and cart functionality.
 
-### Live URL
+### Front-end Live URL
 
 [Campers Shop Frontend Live Site](#) _(https://campers-shop-sepia.vercel.app)_
+
+### Back-end Live URL
+
 [Campers Shop Backend Live Site](#) _(https://campers-shop-backend-gules.vercel.app)_
 
 ## Features
